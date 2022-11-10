@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.EStockMarketApp</groupId>
 	<artifactId>company-info-services</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>company-info-services</name>
 	<description>API to manage company details </description>
 			
@@ -34,13 +34,11 @@
 		<dependency>
     		<groupId>org.springframework.cloud</groupId>
       		<artifactId>spring-cloud-starter-sleuth</artifactId>
-      		<version>2.0.1.RELEASE</version>
     	</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
-			<version>2.0.1.RELEASE</version>
 		</dependency>
 		
 		<dependency>
@@ -52,7 +50,6 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-			<version>3.1.4</version>
 		</dependency>
 		
 		<dependency>
@@ -115,6 +112,19 @@
 		
 		
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 
 	<build>
 		<plugins>
@@ -126,6 +136,12 @@
 						<name>karthiks7678/estockmarketappv1-${project.artifactId}:${project.version}</name>
 					</image>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
 				</configuration>
 			</plugin>
 			<plugin>

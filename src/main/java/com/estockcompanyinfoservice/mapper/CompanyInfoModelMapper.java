@@ -12,7 +12,7 @@ public interface CompanyInfoModelMapper {
 
 	public static void mapperDTOToModel(CompanyInfoModelDTO companyInfoFrom, CompanyInfoModel companyInfoModelTo) throws Exception  {
 		companyInfoModelTo.setCeo(companyInfoFrom.getCeo());
-
+		companyInfoModelTo.setCode(companyInfoFrom.getCode());
 		companyInfoModelTo.setName(companyInfoFrom.getName());
 		companyInfoModelTo.setStockexchangeenlisted(companyInfoFrom.getStockexchangeenlisted());
 		companyInfoModelTo.setTurnover(companyInfoFrom.getTurnover());

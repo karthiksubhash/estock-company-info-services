@@ -28,6 +28,7 @@ public class CompanyInfoAPI {
 	public ResponseEntity<CompanyInfoModelDTO> saveCompany(@Valid @RequestBody CompanyInfoModelDTO companyInfo) {
 		ResponseEntity<CompanyInfoModelDTO> responseEntity = null;
 		try {
+			LOGGER.info("register company is called :: company name: "+companyInfo.getName());
 			CompanyInfoModelDTO companyInfoDTO = companyInfoService.save(companyInfo);
 			if(null != companyInfoDTO.getCode()) {
 				responseEntity= ResponseEntity.status(HttpStatus.CREATED).body(companyInfoDTO);
@@ -44,6 +45,7 @@ public class CompanyInfoAPI {
 	
 	@DeleteMapping("/company/delete/{companycode}")
 	public ResponseEntity<Long> deleteCompany(@PathVariable Long companycode) {
+		LOGGER.info("delete company is called ::companycode: "+companycode);
 		if(companyInfoService.delete(companycode)) {
 			return new ResponseEntity<>(companycode, HttpStatus.OK);	
 		}
