@@ -18,16 +18,16 @@ public class MessageService {
 	
 	public void sendCreateRequestToEStockMarketApp(CompanyInfoModelDTO companyInfo) {
 		LOGGER.info("Adding CompanyInfo to Queue-CreateCompanyDetials "+ companyInfo.toString());
-		rabbitTemplate.convertAndSend("Queue-CreateCompanyDetials",companyInfo);
+//		rabbitTemplate.convertAndSend("Queue-CreateCompanyDetials",companyInfo);
 	}	
 	
 	public void sendDeleteRequestToEStockMarketApp(Long code) {
 		LOGGER.info("Adding request to Queue-DeleteCompanyDetials for company "+code );
-		rabbitTemplate.convertAndSend("Queue-DeleteCompanyDetials",code);
+//		rabbitTemplate.convertAndSend("Queue-DeleteCompanyDetials",code);
 	}
 	
 	public void sendDeleteRequestToStockInfo(Long code) {
 		LOGGER.info("Adding request to Queue-DeleteStocks of company "+code );
-		rabbitTemplate.convertAndSend("Queue-DeleteStocks",code);
+//		rabbitTemplate.convertAndSend("Queue-DeleteStocks",code);
 	}
 }
